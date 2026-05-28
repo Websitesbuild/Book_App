@@ -6,11 +6,11 @@ const app = express();
 const port = 3000;
 
 const db = new pg.Client({
-  user: "postgres",
-  host: "localhost",
-  database: "book_library",
-  password: "Amit@8085",
-  port: 5432,
+  user: process.env.DB_USER || "postgres",
+  host: process.env.DB_HOST || "localhost",   // "db" in Docker, "localhost" locally
+  database: process.env.DB_NAME || "book_library",
+  password: process.env.DB_PASSWORD || "Amit@8085",
+  port: process.env.DB_PORT || 5432,
 });
 db.connect();
 
