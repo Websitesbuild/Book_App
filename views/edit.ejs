@@ -1,0 +1,29 @@
+<%- include('partials/header.ejs'); -%>
+    <main>
+        <div class="container edit-page">
+            <% if(locals.data){ %>
+                <form method="post" class="edit-form">
+                    <label for="title">Book Title</label>
+                    <input type="text" value="<%= data.title %>" name="title">
+                    <label for="author">Book Author:</label>
+                    <input type="text" value="<%= data.author %>" name="author">
+                    <label for="rating">Book Rating:</label>
+                    <select name="rating">
+                        <% for(let i = 1;i<=5;i++){ %>
+                            <% if(data.rating == i){ %>
+                                <option value="<%= i %>" selected><%= i %></option>
+                                <% }else{ %>
+                                    <option value="<%= i %>"><%= i %></option>
+                                    <% } %>
+                            <% } %>
+                    </select>
+
+                    <label for="review">Book Summary:</label>
+                    <textarea name="review" id=""><%= data.review %></textarea>
+                    <button type="submit" formaction="/update" name="B_ID" value="<%= data.book_id %>">Update</button>
+                </form>
+                <% } %>
+        </div>
+    </main>
+
+    <%- include('partials/footer.ejs'); -%>

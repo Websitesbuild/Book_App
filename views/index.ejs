@@ -1,0 +1,63 @@
+<%- include('partials/header.ejs'); -%>
+
+    <main>
+        <form class="sort-box" method="get" action="/sortby">
+            <label for="sort">Sort by:</label>
+            <select name="sort" id="" >
+                <option value="Title">Title</option>
+                <option value="Rating">Rating</option>
+                <option value="Recency">Recency</option>
+            </select>
+            <button class="sort-btn" type="submit">Go</button>
+        </form>
+        <% if(locals.data){ %>
+            <% data.forEach(book=> { %>
+                <div class="container content book-<%= book.id %>">
+
+                    <img class="book-imgs" src="https://covers.openlibrary.org/b/id/<%= book.book_id %>-L.jpg" alt="<%= book.book_id %>">
+                    <a class="title-head" href="">
+                        <h1><%= book.title %></h1>
+                    </a>
+                    <div class="author-box">
+                        <p class="author">by <a href=""><%= book.author %></a></p>
+                        <!-- <img class="favourite" src="assets/favourite.svg" alt=""> -->
+                        <form method="get" class="tooltip-container">
+                            <% if(book.favourite){ %>
+                                <button type="submit" formaction="/remove-favourite" name="book_id" value="<%= book.book_id %>"><img src="assets/red-favourite.svg" alt="Favourite"></button>
+                                <div class="tooltip">Favourites</div>
+                                <% }else{ %>
+                                    <button type="submit" formaction="/add-favourite" name="book_id" value="<%= book.book_id %>"><img src="assets/favourite.svg" alt="Favourite"></button>
+                                    <div class="tooltip">Add to favourites</div>
+                                    <% } %>
+                                </form>
+                          
+                    </div>
+                    
+                    <p class="review-date">Review Date: <%= book.review_date %></p>
+                    <div class="rating">
+                        <ul>
+                            <% for(let i=1;i<=5;i++){ %>
+                                <% if(i <= book.rating ){%>
+                                    <li class="star selected"><a href=""><img src="assets/goldstar.svg" alt=""></a></li>
+                                    <% }else{ %>
+                                        <li class="star selected"><a href=""><img src="assets/star.svg" alt=""></a></li>
+                                        <% } %>
+                                <% } %>
+                        </ul>
+                        <p><%= book.rating %>/5</p>
+                    </div>
+                    <p class="review">
+                        <%= book.review %>
+                    </p>
+                    <form class="btns">
+                        <button class="edit-btn" type="submit" formaction="/edit/<%= book.id %>" formmethod="get">Edit</button>
+                        <button class="delete-btn" name="delete" value="<%= book.id %>" type="submit" formaction="/delete/<%= book.id %>" formmethod="get">Delete</button>
+                    </form>
+
+                    <hr>
+                </div>
+                <% }); %>
+            <% }%>
+    </main>
+
+    <%- include('partials/footer.ejs'); -%>

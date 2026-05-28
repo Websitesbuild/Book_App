@@ -1,0 +1,193 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+body{
+    width: 100%;
+    min-height: 100dvh;
+}
+main{
+    position: relative;
+    margin: 10px;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sort-box{
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+.sort-btn{
+    padding: 0 10px;
+}
+.content>img{
+    float: left;
+    margin-right: 20px;
+    border-radius: 15px;
+    width: 300px;
+    height: 500px;
+    transition: transform 0.3s ease-in-out;
+}
+.content>img:hover{
+    transform: scale(1.09) rotateX(-5deg);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}
+.content p{
+    margin: 0;
+    padding: 0;
+    text-align: justify;
+}
+.author-box{
+    display: flex;
+    justify-content: space-between;
+}
+.favourite{
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.favourite::after{
+    content: "Add to favourites"; /* Tooltip text */
+    position: absolute;
+    bottom: -30px; /* Adjust position */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+.favourite:hover{
+    opacity: 1;
+    visibility: visible;
+}
+.content .review-date{
+    margin: 10px;
+}
+.rating{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid;
+    margin-bottom: 10px;
+}
+.rating ul{
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    padding-left: 0;
+}
+.rating ul li a{
+    cursor: not-allowed;
+}
+.rating p{
+    margin: 0;
+    padding: 0;
+    margin-top: 3px;
+}
+.btns{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+}
+.edit-btn,.delete-btn{
+    padding: 10px 10px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    border: 1px solid;
+}
+.edit-btn:hover{
+    background-color: dodgerblue;
+    color: #fff;
+}
+.delete-btn:hover{
+    background-color: red;
+    color: #fff;
+}
+.edit-page,.new-page{
+    display: flex;
+    justify-content: center;
+}
+.edit-form,.new-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width:1000px ;
+}
+.edit-form,.new-form *{
+    padding-left: 5px;
+}
+.edit-form textarea,.new-form textarea{
+    padding: 10px;
+    height: 400px;
+    text-align: justify;
+}
+.footer{
+    position: relative;
+}
+
+
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-container button{
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+  .tooltip-container img {
+    cursor: pointer;
+  }
+  
+  .tooltip {
+    position: absolute;
+    bottom: -35px; /* Position below the image */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  .tooltip-container:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+
+@media (max-width: 768px) {
+    .content>img{
+        width: 200px;
+        height: 300px;
+    }
+}
+
+@media (max-width: 460px) {
+    .content>img{
+        width: 150px;
+        height: 200px;
+    }
+}

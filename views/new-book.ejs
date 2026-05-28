@@ -1,0 +1,27 @@
+<%- include('partials/header.ejs'); -%>
+    <main>
+        <div class="container new-page">
+            <form method="post" class="new-form">
+                <label for="Book_Id">Enter the Book ID:</label>
+                <input type="text" name="Book_Id" required>
+                <label for="title">Enter the Book Title</label>
+                <input type="text" name="title" required>
+                <label for="author">Enter the Book Author:</label>
+                <input type="text" name="author" required>
+                <label for="rating">Select Book Rating:</label>
+                <select name="rating" required>
+                    <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+
+                <label for="review">Write the Book Summary:</label>
+                <textarea name="review" required></textarea>
+                <button type="submit" formaction="/add-new-book">Submit</button>
+            </form>
+        </div>
+    </main>
+
+    <%- include('partials/footer.ejs'); -%>
